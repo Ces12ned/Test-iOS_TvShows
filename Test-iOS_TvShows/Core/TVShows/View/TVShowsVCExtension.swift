@@ -29,6 +29,12 @@ extension TVShowsViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        navigationController?.pushViewController(DetailShowViewController(tvShowDataFromCell: tvShowsViewModel.tvShowsData[indexPath.row]), animated: true)
+        
+    }
+    
     
     
     

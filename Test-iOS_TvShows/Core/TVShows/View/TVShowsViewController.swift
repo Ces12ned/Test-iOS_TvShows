@@ -25,7 +25,7 @@ class TVShowsViewController: UIViewController{
         
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.font = UIFont(name: "Futura", size: 24)
+        title.font = UIFont(name: "Futura-Medium", size: 24)
         title.textColor = .black
         title.text = "TV Shows"
         return title
