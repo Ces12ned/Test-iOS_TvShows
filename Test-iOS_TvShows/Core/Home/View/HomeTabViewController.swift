@@ -12,6 +12,9 @@ class HomeTabViewController: UITabBarController, UITabBarControllerDelegate {
     //MARK: - Properties
     
     
+    
+    
+    
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -20,6 +23,7 @@ class HomeTabViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         view.backgroundColor = .white
         tabBar.tintColor = .black
+        
 
     }
     
@@ -29,6 +33,10 @@ class HomeTabViewController: UITabBarController, UITabBarControllerDelegate {
 
 
     //MARK: - Methods
+    
+    
+    
+    
     
     private func tabBarSettings(){
         
