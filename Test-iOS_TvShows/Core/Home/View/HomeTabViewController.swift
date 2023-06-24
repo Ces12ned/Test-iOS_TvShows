@@ -14,7 +14,6 @@ class HomeTabViewController: UITabBarController, UITabBarControllerDelegate {
     
     
     
-    
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -33,11 +32,7 @@ class HomeTabViewController: UITabBarController, UITabBarControllerDelegate {
 
 
     //MARK: - Methods
-    
-    
-    
-    
-    
+
     private func tabBarSettings(){
         
         let tvShowsTabBar = TVShowsViewController()

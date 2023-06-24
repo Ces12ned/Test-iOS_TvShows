@@ -45,10 +45,16 @@ class FavoriteShowsViewController: UIViewController {
       
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         topViewConfiguration()
         favoriteTVShowTableViewConfiguration()
-
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            CoreData.fetchFavoriteTVShows()
+            self.favoriteTVShowsTableView.reloadData()
+        }
     }
     
 

@@ -39,7 +39,7 @@ class TVShowsViewController: UIViewController{
         tvShowTable.register(TVShowTableViewCell.self, forCellReuseIdentifier: "tvShowCell")
         return tvShowTable
     }()
-
+        
     var tvShowsViewModel = TVShowsViewModel()
     
     //MARK: - Life Cycle
@@ -54,6 +54,7 @@ class TVShowsViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
             self.tvShowTableViewConfiguration()
+            self.tvShowTableView.reloadData()
         }
     }
 

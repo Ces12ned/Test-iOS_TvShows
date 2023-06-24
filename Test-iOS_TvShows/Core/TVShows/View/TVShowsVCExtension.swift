@@ -39,11 +39,15 @@ extension TVShowsViewController: UITableViewDataSource, UITableViewDelegate{
         
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (contextualAction,view, actionPerformed: (Bool) -> ()) in
                 
-            let alert = UIAlertController(title: "Delete", message: "Do you want to remove this item?", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Delete", message: "Do you want to remove this item from your Favorite TV Shows list?", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
                 
-                print("DEBUG: Item deleted")
-                
+                if CoreData.doesFavoriteTVShowExists(id: self.tvShowsViewModel.tvShowsData[indexPath.row].id){
+                    CoreData.deleteFavoriteTVShow(id: self.tvShowsViewModel.tvShowsData[indexPath.row].id)
+                }else{
+                    tableView.reloadRows(at: [indexPath], with: .left)
+                }
+                tableView.reloadRows(at: [indexPath], with: .left)
             }))
             alert.addAction(UIAlertAction(title: "No", style: .destructive))
             self.present(alert, animated: true, completion: nil)
@@ -57,7 +61,22 @@ extension TVShowsViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let addToFavorites = UIContextualAction(style: .normal, title: "Favorite") { (contextualAction,view, actionPerformed: (Bool) -> ()) in
-                       
+        
+            if CoreData.doesFavoriteTVShowExists(id: self.tvShowsViewModel.tvShowsData[indexPath.row].id){
+                tableView.reloadRows(at: [indexPath], with: .right)
+            }else{
+                let favoriteTVShow = FavoritesTVShowModel(context: context)
+                favoriteTVShow.id = Int64(self.tvShowsViewModel.tvShowsData[indexPath.row].id)
+                favoriteTVShow.name = self.tvShowsViewModel.tvShowsData[indexPath.row].name
+                favoriteTVShow.image = self.tvShowsViewModel.tvShowsData[indexPath.row].image.medium
+                favoriteTVShow.summary = self.tvShowsViewModel.tvShowsData[indexPath.row].summary
+                favoriteTVShow.externals = self.tvShowsViewModel.tvShowsData[indexPath.row].externals.imdb
+                
+                CoreData.appendFavoriteTVShow(favoriteTVShow: favoriteTVShow)
+            }
+            
+            tableView.reloadRows(at: [indexPath], with: .right)
+
         }
         
         addToFavorites.image = UIImage(named: "star")

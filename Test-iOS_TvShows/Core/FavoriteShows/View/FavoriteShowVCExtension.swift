@@ -15,14 +15,18 @@ extension FavoriteShowsViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+         return CoreData.favoriteTVShows.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let favoriteTVShowsCell = tableView.dequeueReusableCell(withIdentifier: "favoriteTVShowCell", for: indexPath) as! FavoriteTVShowTableViewCell
+    
         favoriteTVShowsCell.accessoryType = .disclosureIndicator
-        favoriteTVShowsCell.textLabel?.text = "Dummy"
+        favoriteTVShowsCell.indexForCell = indexPath.row
+        favoriteTVShowsCell.tvShowInfo = CoreData.favoriteTVShows
+        
         return favoriteTVShowsCell
     }
     
@@ -43,9 +47,13 @@ extension FavoriteShowsViewController: UITableViewDataSource, UITableViewDelegat
             let alert = UIAlertController(title: "Delete", message: "Do you want to remove this item?", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
 
-                print("DEBUG: Item deleted")
+                if CoreData.doesFavoriteTVShowExists(id: Int(CoreData.favoriteTVShows[indexPath.row].id)){
+                    CoreData.deleteFavoriteTVShow(id:Int(CoreData.favoriteTVShows[indexPath.row].id))
+                }else{
+                    tableView.deleteRows(at: [indexPath], with: .left)
+                }
+                tableView.deleteRows(at: [indexPath], with: .left)
 
-//                tableView.deleteRows(at: [indexPath], with: .automatic)
                             
             }))
             alert.addAction(UIAlertAction(title: "No", style: .destructive))

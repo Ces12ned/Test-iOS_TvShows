@@ -28,15 +28,14 @@ class FavoriteTVShowTableViewCell: UITableViewCell {
     }()
     
     var indexForCell: Int?
-    var tvShowInfo : [TVShowModel]?{
+    var tvShowInfo : [FavoritesTVShowModel]?{
         
         didSet{
 
             guard let showData = tvShowInfo else {return}
             guard let safeIndex = indexForCell else {return}
-            tvShowCover.load(url: showData[safeIndex].image.medium)
+            tvShowCover.load(url: showData[safeIndex].image!)
             tvShowName.text = showData[safeIndex].name
-
         }
 
     }

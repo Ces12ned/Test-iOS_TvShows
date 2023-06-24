@@ -32,14 +32,11 @@ class TVShowTableViewCell: UITableViewCell {
     var tvShowInfo : [TVShowModel]?{
         
         didSet{
-
             guard let showData = tvShowInfo else {return}
             guard let safeIndex = indexForCell else {return}
             tvShowCover.load(url: showData[safeIndex].image.medium)
             tvShowName.text = showData[safeIndex].name
-
         }
-
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

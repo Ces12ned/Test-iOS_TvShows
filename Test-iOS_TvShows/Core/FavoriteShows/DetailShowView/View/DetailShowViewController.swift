@@ -63,15 +63,18 @@ class DetailShowViewController: UIViewController {
     
 
     var tvShowDataFromCell : TVShowModel
+    var favoriteTVShowDataFromCell : FavoritesTVShowModel?
     
     init(tvShowDataFromCell: TVShowModel) {
         self.tvShowDataFromCell = tvShowDataFromCell
         super.init(nibName: nil, bundle: nil)
     }
-    
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
     
     
     //MARK: - Life Cycle
