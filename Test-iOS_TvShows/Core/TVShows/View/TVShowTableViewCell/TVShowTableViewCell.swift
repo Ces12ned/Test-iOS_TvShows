@@ -23,7 +23,6 @@ class TVShowTableViewCell: UITableViewCell {
        
         let name = UILabel()
         name.font = UIFont(name: "Futura", size: 20)
-        name.translatesAutoresizingMaskIntoConstraints = false
         name.textAlignment = .left
         name.numberOfLines = 2
         return name
@@ -35,9 +34,7 @@ class TVShowTableViewCell: UITableViewCell {
         didSet{
 
             guard let showData = tvShowInfo else {return}
-//            print(showData)
             guard let safeIndex = indexForCell else {return}
-//            print(safeIndex)
             tvShowCover.load(url: showData[safeIndex].image.medium)
             tvShowName.text = showData[safeIndex].name
 

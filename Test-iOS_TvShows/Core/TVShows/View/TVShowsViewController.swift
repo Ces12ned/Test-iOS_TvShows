@@ -48,11 +48,15 @@ class TVShowsViewController: UIViewController{
         super.viewDidLoad()
         
         topViewConfiguration()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
             self.tvShowTableViewConfiguration()
         }
-        
     }
+
     
     
     //MARK: - Methods

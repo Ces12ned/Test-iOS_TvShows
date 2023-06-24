@@ -82,7 +82,6 @@ class DetailShowViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        
         configureTVShowCover()
         configureTVShowName()
         configureTVShowSummary()
@@ -219,10 +218,12 @@ class DetailShowViewController: UIViewController {
 
         //Right
         
+    
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "star.slash"),
                                                            style: .done,
                                                            target: self,
-                                                           action: #selector(removeFromFavorites))
+                                                            action: #selector(removeFromFavorites))
+        
         
         navigationItem.rightBarButtonItem?.tintColor = .systemOrange
         
@@ -236,7 +237,7 @@ class DetailShowViewController: UIViewController {
     
     @objc func removeFromFavorites(){
 
-        print("Removed from favorites")
+        print("DEBUG: Removed from favorites")
     }
 
 }
