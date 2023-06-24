@@ -30,6 +30,16 @@ class FavoriteShowsViewController: UIViewController {
         return title
     }()
     
+    
+    private let favoriteTVShowsTableView: UITableView = {
+        
+        let favoriteTVShows = UITableView()
+        favoriteTVShows.translatesAutoresizingMaskIntoConstraints = false
+        favoriteTVShows.register(FavoriteTVShowTableViewCell.self, forCellReuseIdentifier: "favoriteTVShowCell")
+        return favoriteTVShows
+    }()
+    
+    
     //MARK: - Life Cycle
       
       
@@ -37,7 +47,7 @@ class FavoriteShowsViewController: UIViewController {
         super.viewDidLoad()
         
         topViewConfiguration()
-
+        favoriteTVShowTableViewConfiguration()
 
     }
     
@@ -78,4 +88,27 @@ class FavoriteShowsViewController: UIViewController {
         ])
     }
 
+    
+    private func favoriteTVShowTableViewConfiguration(){
+        
+        view.addSubview(favoriteTVShowsTableView)
+        favoriteTVShowsTableView.dataSource = self
+        favoriteTVShowsTableView.delegate = self
+        setFavoriteTVShowTableViewConstraints()
+        
+    }
+    
+    private func setFavoriteTVShowTableViewConstraints(){
+        
+        NSLayoutConstraint.activate([
+            favoriteTVShowsTableView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 0),
+            favoriteTVShowsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+            favoriteTVShowsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
+            favoriteTVShowsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -HomeTabViewController().tabBar.frame.height*2)
+        ])
+        
+        
+    }
+    
+    
 }
