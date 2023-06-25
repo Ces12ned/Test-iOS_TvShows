@@ -19,6 +19,7 @@
 		0A80A16D2A454A78008D1C17 /* TVShowsVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80A16C2A454A78008D1C17 /* TVShowsVCExtension.swift */; };
 		0A80A16F2A455AAB008D1C17 /* TVShowsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80A16E2A455AAB008D1C17 /* TVShowsViewModel.swift */; };
 		0A80A1712A455D7D008D1C17 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A80A1702A455D7D008D1C17 /* UIImageExtension.swift */; };
+		0AA2ACF92A477057008FC11B /* FavoriteDetailShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2ACF82A477057008FC11B /* FavoriteDetailShowViewController.swift */; };
 		0ACD22442A45091C00BAC0F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACD22432A45091C00BAC0F4 /* AppDelegate.swift */; };
 		0ACD22482A45091C00BAC0F4 /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACD22472A45091C00BAC0F4 /* HomeTabViewController.swift */; };
 		0ACD224B2A45091C00BAC0F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ACD22492A45091C00BAC0F4 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 		0A80A16C2A454A78008D1C17 /* TVShowsVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsVCExtension.swift; sourceTree = "<group>"; };
 		0A80A16E2A455AAB008D1C17 /* TVShowsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsViewModel.swift; sourceTree = "<group>"; };
 		0A80A1702A455D7D008D1C17 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		0AA2ACF82A477057008FC11B /* FavoriteDetailShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailShowViewController.swift; sourceTree = "<group>"; };
 		0ACD22402A45091C00BAC0F4 /* Test-iOS_TvShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test-iOS_TvShows.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ACD22432A45091C00BAC0F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0ACD22472A45091C00BAC0F4 /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				0ACD22892A450C8900BAC0F4 /* DetailShowViewController.swift */,
+				0AA2ACF82A477057008FC11B /* FavoriteDetailShowViewController.swift */,
 				0A08FC122A4655400084C206 /* IMDbViewController.swift */,
 			);
 			path = View;
@@ -452,6 +455,7 @@
 				0A80A1662A452D0E008D1C17 /* TVShowModel.swift in Sources */,
 				0ACD22842A450C6200BAC0F4 /* TVShowsViewController.swift in Sources */,
 				0A80A16D2A454A78008D1C17 /* TVShowsVCExtension.swift in Sources */,
+				0AA2ACF92A477057008FC11B /* FavoriteDetailShowViewController.swift in Sources */,
 				0A08FC112A4646A80084C206 /* StringExtension.swift in Sources */,
 				0A08FC152A46695E0084C206 /* FavoriteShowVCExtension.swift in Sources */,
 				0A08FC132A4655400084C206 /* IMDbViewController.swift in Sources */,

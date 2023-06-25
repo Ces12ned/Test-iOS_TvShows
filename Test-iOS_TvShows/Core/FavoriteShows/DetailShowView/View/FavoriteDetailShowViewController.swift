@@ -1,13 +1,13 @@
 //
-//  DetailShowViewController.swift
+//  FavoriteDetailShowViewController.swift
 //  Test-iOS_TvShows
 //
-//  Created by Edgar Cisneros on 22/06/23.
+//  Created by Edgar Cisneros on 24/06/23.
 //
 
 import UIKit
 
-class DetailShowViewController: UIViewController {
+class FavoriteDetailShowViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -61,15 +61,14 @@ class DetailShowViewController: UIViewController {
         
     }()
     
-
-    var tvShowDataFromCell : TVShowModel?
+    var favoriteTVShowDataFromCell : FavoritesTVShowModel?
     
-    init(tvShowDataFromCell: TVShowModel?) {
-        self.tvShowDataFromCell = tvShowDataFromCell
+    init(favoriteTVShowDataFromCell: FavoritesTVShowModel?) {
+        self.favoriteTVShowDataFromCell = favoriteTVShowDataFromCell
         super.init(nibName: nil, bundle: nil)
     }
     
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -95,7 +94,7 @@ class DetailShowViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        title = tvShowDataFromCell?.name
+        title = favoriteTVShowDataFromCell?.name
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.black,
             NSAttributedString.Key.font: UIFont(name: "Futura", size: 28) as Any]
@@ -108,7 +107,7 @@ class DetailShowViewController: UIViewController {
     private func configureTVShowCover(){
         
         view.addSubview(tvShowCover)
-        tvShowCover.load(url: (tvShowDataFromCell?.image.original)!)
+        tvShowCover.load(url: (favoriteTVShowDataFromCell?.image)!)
         setTVShowCoverConstraints()
         
     }
@@ -127,7 +126,7 @@ class DetailShowViewController: UIViewController {
     private func configureTVShowName(){
         
         view.addSubview(tvShowName)
-        tvShowName.text = tvShowDataFromCell?.name
+        tvShowName.text = favoriteTVShowDataFromCell?.name
         setTVShowNameConstraints()
         
     }
@@ -148,7 +147,7 @@ class DetailShowViewController: UIViewController {
     private func configureTVShowSummary(){
         
         view.addSubview(tvShowSummary)
-        tvShowSummary.text = tvShowDataFromCell?.summary.stripOutHtml()
+        tvShowSummary.text = favoriteTVShowDataFromCell?.summary?.stripOutHtml()
         setTVShowSummaryConstraints()
         
     }
@@ -167,7 +166,7 @@ class DetailShowViewController: UIViewController {
     
     private func configureimdbButton(){
         
-        if tvShowDataFromCell?.externals.imdb == nil {
+        if favoriteTVShowDataFromCell?.externals == nil {
             
             imdbButton.isHidden = true
             
@@ -194,14 +193,14 @@ class DetailShowViewController: UIViewController {
         
         
     }
-
+    
     @objc func goToIMDB(){
-
-        navigationController?.pushViewController(IMDbViewController(imdb: tvShowDataFromCell?.externals.imdb ?? ""), animated: true)
+        
+        navigationController?.pushViewController(IMDbViewController(imdb: favoriteTVShowDataFromCell?.externals ?? ""), animated: true)
     }
     
     
-
+    
     
     //MARK: - NavigationItemsSettings
     
@@ -218,10 +217,11 @@ class DetailShowViewController: UIViewController {
         
         navigationItem.leftBarButtonItem?.tintColor = .black
         
-
+        
         //Right
- 
-        if CoreData.doesFavoriteTVShowExists(id: tvShowDataFromCell!.id){
+        
+        
+        if CoreData.doesFavoriteTVShowExists(id: Int(favoriteTVShowDataFromCell!.id)){
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "star.slash"),
                                                                style: .done,
@@ -242,31 +242,29 @@ class DetailShowViewController: UIViewController {
             
         }
         
-        
     }
     
     
     @objc func returnToAuth(){
-
+        
         navigationController?.popViewController(animated: true)
     }
     
-   
+    
     @objc func toFromFavorites(){
         
-        if CoreData.doesFavoriteTVShowExists(id: tvShowDataFromCell!.id){
-            CoreData.deleteFavoriteTVShow(id: tvShowDataFromCell?.id)
+        if CoreData.doesFavoriteTVShowExists(id: Int(favoriteTVShowDataFromCell!.id)){
+            CoreData.deleteFavoriteTVShow(id:Int(favoriteTVShowDataFromCell!.id))
             DispatchQueue.main.async {
                 self.navigationItemsSettings()
             }
-            
         }else{
             let favoriteTVShow = FavoritesTVShowModel(context: context)
-            favoriteTVShow.id = Int64(tvShowDataFromCell!.id)
-            favoriteTVShow.name = tvShowDataFromCell?.name
-            favoriteTVShow.image = tvShowDataFromCell?.image.medium
-            favoriteTVShow.summary = tvShowDataFromCell?.summary
-            favoriteTVShow.externals = tvShowDataFromCell?.externals.imdb
+            favoriteTVShow.id = Int64(self.favoriteTVShowDataFromCell!.id)
+            favoriteTVShow.name = self.favoriteTVShowDataFromCell?.name
+            favoriteTVShow.image = self.favoriteTVShowDataFromCell?.image
+            favoriteTVShow.summary = self.favoriteTVShowDataFromCell?.summary
+            favoriteTVShow.externals = self.favoriteTVShowDataFromCell?.externals
             
             CoreData.appendFavoriteTVShow(favoriteTVShow: favoriteTVShow)
             DispatchQueue.main.async {
@@ -274,5 +272,8 @@ class DetailShowViewController: UIViewController {
             }
         }
     }
-
+    
+    
 }
+
+

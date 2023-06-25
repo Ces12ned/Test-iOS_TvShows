@@ -47,7 +47,8 @@ extension TVShowsViewController: UITableViewDataSource, UITableViewDelegate{
                 }else{
                     tableView.reloadRows(at: [indexPath], with: .left)
                 }
-                tableView.reloadRows(at: [indexPath], with: .left)
+                    tableView.reloadRows(at: [indexPath], with: .left)
+             
             }))
             alert.addAction(UIAlertAction(title: "No", style: .destructive))
             self.present(alert, animated: true, completion: nil)
@@ -63,7 +64,7 @@ extension TVShowsViewController: UITableViewDataSource, UITableViewDelegate{
         let addToFavorites = UIContextualAction(style: .normal, title: "Favorite") { (contextualAction,view, actionPerformed: (Bool) -> ()) in
         
             if CoreData.doesFavoriteTVShowExists(id: self.tvShowsViewModel.tvShowsData[indexPath.row].id){
-                tableView.reloadRows(at: [indexPath], with: .right)
+                    tableView.reloadRows(at: [indexPath], with: .right)
             }else{
                 let favoriteTVShow = FavoritesTVShowModel(context: context)
                 favoriteTVShow.id = Int64(self.tvShowsViewModel.tvShowsData[indexPath.row].id)
@@ -74,9 +75,7 @@ extension TVShowsViewController: UITableViewDataSource, UITableViewDelegate{
                 
                 CoreData.appendFavoriteTVShow(favoriteTVShow: favoriteTVShow)
             }
-            
-            tableView.reloadRows(at: [indexPath], with: .right)
-
+                tableView.reloadRows(at: [indexPath], with: .right)
         }
         
         addToFavorites.image = UIImage(named: "star")

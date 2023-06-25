@@ -37,9 +37,7 @@ final class Networking {
             task.resume()
             
         }
-        
-        
-        
+
     }
     
     

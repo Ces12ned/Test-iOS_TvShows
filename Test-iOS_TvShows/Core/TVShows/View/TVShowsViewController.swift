@@ -9,8 +9,7 @@ import UIKit
 
 class TVShowsViewController: UIViewController{
     
-    
-    
+
     //MARK: - Properties
     
     private let topView: UIView = {
@@ -48,18 +47,13 @@ class TVShowsViewController: UIViewController{
         super.viewDidLoad()
         
         topViewConfiguration()
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         DispatchQueue.main.async {
             self.tvShowTableViewConfiguration()
-            self.tvShowTableView.reloadData()
         }
+        
     }
-
-    
-    
+        
     //MARK: - Methods
 
     

@@ -33,10 +33,8 @@ extension FavoriteShowsViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        navigationController?.pushViewController(DetailShowViewController(), animated: true)
-        
-        print("Push to Detail")
-        
+        navigationController?.pushViewController(FavoriteDetailShowViewController(favoriteTVShowDataFromCell: CoreData.favoriteTVShows[indexPath.row]), animated: true)
+
     }
     
     
