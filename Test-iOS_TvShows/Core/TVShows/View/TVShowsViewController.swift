@@ -47,13 +47,12 @@ class TVShowsViewController: UIViewController{
         super.viewDidLoad()
         
         topViewConfiguration()
+        tvShowsViewModel.useNetworking()
+        tvShowTableViewConfiguration()
+        setupBinders()
         
-        DispatchQueue.main.async {
-            self.tvShowTableViewConfiguration()
-        }
         
     }
-        
     //MARK: - Methods
 
     
@@ -90,6 +89,15 @@ class TVShowsViewController: UIViewController{
         ])
     }
     
+    
+    private func setupBinders () {
+        tvShowsViewModel.tvShowsData.bind { [weak self] tvShowsData in
+            DispatchQueue.main.async {
+                self?.tvShowTableView.reloadData()
+            }
+        }
+        
+    }
     
     private func tvShowTableViewConfiguration(){
         

@@ -35,7 +35,6 @@ final class Networking {
                 }
             }
             task.resume()
-            
         }
 
     }
@@ -46,7 +45,6 @@ final class Networking {
             let decoder = JSONDecoder()
             do {
                 let decodedData = try decoder.decode([TVShowModel].self, from: tvShowData)
-
                 return decodedData
             } catch{
                 return nil

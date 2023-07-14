@@ -1,0 +1,55 @@
+1. Arquitectura utilizada:
+
+    La arquitectura seleccionada para el desarrollo del proyecto fue MVVM (Model-View-View Model), esto debido a que esta arquitectura en comparación con MVC (Model-View-Controller), permite la
+    delegación de la lógica mostrada por la capa de UI, así como la presentación de la información utilizando los "Modelos de Vista" y permitiendo que los View-Controllers no sean tan extensos
+    y solo estén enfocados en el trabajo de presentar la vista. De igual forma esto permite tener un código más limpio, ampliable y permite la testibilidad del código.
+
+2. Librerias externas utilizadas:
+
+    Debido a que en las indicaciones se solicitó "tratar de usar las librerías externas en lo más mínimo" se decidió no hacer uso de ellas. 
+
+    Sin embargo, para facilitar la escritura de código, se pudo hacer uso de las siguientes librerías:
+            
+            -Realm: Para la persistencia de datos
+            -KingFisher: Para la descarga y uso de imágenes desde la web.  
+            -SwipeCellKit: Para las acciones de "Swipe" en las celdas, tanto para agregar o eliminar los datos de la lista de favoritos. 
+
+3. Mejoras en el código:
+
+    3.1.- Mejora en la implementación de la arquitectura de diseño y la capa de Networking. 
+        3.1.1.- Esto debido a que existe un "bug" el cual hace que la primera vez que se muestra la pantalla inicial no muestra la lista de "TV Shows", sin embargo, al volver a abrir la aplicación 
+                el funcionamiento es el adecuado. 
+        3.1.2.- Uso de genéricos en lugar del modelo específico generado del JSON como dato de retorno en la función "parseJSON()".
+        3.1.3.- Generar funciones que permitan hacer que la lógica en la manipulación de las celdas para las listas, se encuentre fuera de los archivos de View Controller. 
+    
+    3.2.- Implementación de SwipeCellKit. 
+        3.2.1.- Esto debido a que existe un bug en la implementación del código nativo de Swift para UISwipeActionsConfiguration, pues si se realiza el gesto de manera rápida, en ocasiones la 
+                interacción con las celdas específicamente en su selección queda inhabilitado. Sin embargo, se puede realizar scroll en la tabla así como seguir realizando los gesto de "Swipe" 
+                en cada celda. 
+    
+    3.3.- Mejora en la vista de detalle. 
+        3.3.1.- Uso de "genéricos" para el inicializador del ViewController en lugar de generar dos ViewController (DetailShowViewController y FavoriteDetailShowViewController).
+
+    3.4.- Mejoras en la UI. 
+
+    3.5.- A pesar de que no son mejoras directamento del código, realizar el código con una compatibilidad para iOS 13+, esto debido a que permite que el código sea más sencillo de realizar y que 
+          se puedan hacer uso de funcionalidad que permiten una mejora en la aplicación.
+
+4. Mayores problemas en el desarrollo y su resolución. 
+
+    4.1.- Implementación de la capa de Networking con el "Modelo de Vista" para mostrar los datos en la vista principal. 
+          La resolución se hizo al implementar las funciones de la capa de Networking dentro del inicializador del "Modelo de Vista". 
+    4.2.- Al no existir el archivo "SceneDelegate" por el "minimum deployment target" de iOS indicado, la preparación inicial del proyecto. 
+          La resolución fue consultar en la web. 
+            *Cabe resaltar que debido a la actualización de XCode a su versión 14, el "minimum deployment target" permitido para un buen funcionamiento es iOS 11, razón por la cual la aplicación es 
+            compatible para iOS 11 o superior. 
+
+5. Puntos no concluídos. 
+
+    5.1.- Unit Testing 
+
+        La razón por la cual no fueron concluídos es mi poca experiencia en el desarrollo de pruebas unitarias, razón por la cual preferí no realizar pruebas unitarias que fueran deficientes y que 
+        mostraran un bajo rendimiento en el su desarrollo. Por ello, estoy por comprar y tomar el curso titulado "Unit Testing Swift Mobile App" en la plataforma Udemy impartido por Sergey Kargopolov. 
+
+
+            

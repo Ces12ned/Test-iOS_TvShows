@@ -6,16 +6,16 @@
 //
 
 final class TVShowsViewModel : NetworkingDelegate{
+        
+    var tvShowsData: ObservableObject<[TVShowModel]> = ObservableObject([TVShowModel]())
     
-    var tvShowsData = [TVShowModel]()
-    
-    init() {
-        Networking.shared.delegate = self
+    func useNetworking(){
         Networking.shared.fetchData()
+        Networking.shared.delegate = self
     }
     
     func getData(tvShows: [TVShowModel]) {
-            self.tvShowsData = tvShows
+        self.tvShowsData.value = tvShows
     }
     
 }
